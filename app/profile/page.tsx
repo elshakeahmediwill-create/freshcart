@@ -6,12 +6,21 @@ import {
   Trash2, Phone, Building2, Save, CheckCircle2, Lock, Eye, EyeOff 
 } from "lucide-react";
 
+// تعريف الواجهات (Interfaces) لحل مشاكل الـ Typescript بالكامل
+interface Address {
+  id: number;
+  name: string;
+  fullAddress: string;
+  phone: string;
+  city: string;
+}
+
 export default function MyAccountPage() {
   // --- 1. الحالات (States) ---
   const [activeTab, setActiveTab] = useState("addresses"); 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingId, setEditingId] = useState(null);
-  const [addresses, setAddresses] = useState([]); 
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [addresses, setAddresses] = useState<Address[]>([]); 
   const [isSaved, setIsSaved] = useState(false);
   const [showPasswords, setShowPasswords] = useState({ current: false, new: false, confirm: false });
 
@@ -38,14 +47,14 @@ export default function MyAccountPage() {
 
   // --- 2. الوظائف (Functions) ---
 
-  const handleSaveSettings = (e) => {
+  const handleSaveSettings = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Saving Profile Data:", profileData);
     setIsSaved(true);
     setTimeout(() => setIsSaved(false), 3000);
   };
 
-  const handleChangePassword = (e) => {
+  const handleChangePassword = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Password Change Requested:", passwordData);
     // هنا ممكن تضيف Logic التأكد من تطابق الكلمتين
@@ -53,7 +62,7 @@ export default function MyAccountPage() {
     setPasswordData({ currentPassword: "", newPassword: "", confirmPassword: "" });
   };
 
-  const togglePasswordVisibility = (field) => {
+  const togglePasswordVisibility = (field: "current" | "new" | "confirm") => {
     setShowPasswords(prev => ({ ...prev, [field]: !prev[field] }));
   };
 
@@ -63,17 +72,17 @@ export default function MyAccountPage() {
     setIsModalOpen(true);
   };
 
-  const openEditModal = (address) => {
+  const openEditModal = (address: Address) => {
     setEditingId(address.id);
     setFormData(address);
     setIsModalOpen(true);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = (id: number) => {
     setAddresses(addresses.filter(addr => addr.id !== id));
   };
 
-  const handleSubmitAddress = (e) => {
+  const handleSubmitAddress = (e: React.FormEvent) => {
     e.preventDefault();
     if (editingId) {
       setAddresses(addresses.map(addr => addr.id === editingId ? { ...formData, id: editingId } : addr));

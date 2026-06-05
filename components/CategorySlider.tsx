@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link"; // استيراد اللينك مهم جداً
+import Link from "next/link";
 
 interface Category {
   _id: string;
@@ -9,7 +9,13 @@ interface Category {
   image: string;
 }
 
-const CategorySlider = () => {
+// تعريف الـ Props
+interface CategorySliderProps {
+  categories?: any; 
+}
+
+// تحويل الدالة لشكل function صريح عشان TypeScript يقراها صح
+export default function CategorySlider({ categories: propsCategories }: CategorySliderProps) {
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
@@ -40,7 +46,6 @@ const CategorySlider = () => {
       {/* --- الجزء الثاني: شبكة الدوائر --- */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-y-10 gap-x-4 mb-20">
         {categories.map((cat) => (
-          // التعديل هنا: المسار بقى /categorie/ وليس /categories/
           <Link 
             href={`/categorie/${cat._id}`} 
             key={cat._id} 
@@ -102,6 +107,4 @@ const CategorySlider = () => {
       </div>
     </section>
   );
-};
-
-export default CategorySlider;
+}

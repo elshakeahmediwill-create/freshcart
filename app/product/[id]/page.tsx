@@ -208,7 +208,7 @@ const { addToCart } = useCart();
               ].map((item, i) => (
                 <div key={i} className="flex flex-col items-center text-center group cursor-default">
                   <div className="bg-green-50 p-3 rounded-2xl mb-2 group-hover:bg-[#0aad0a] group-hover:rotate-[360deg] transition-all duration-700">
-                    {React.cloneElement(item.icon as React.ReactElement, { className: "text-[#0aad0a] group-hover:text-white" })}
+                 {React.cloneElement(item.icon as React.ReactElement<any>, { className: "text-[#0aad0a] group-hover:text-white" })}
                   </div>
                   <p className="text-[10px] font-black text-gray-800 uppercase">{item.title}</p>
                   <p className="text-[9px] text-gray-400 mt-0.5">{item.desc}</p>

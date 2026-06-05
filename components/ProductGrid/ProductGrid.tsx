@@ -2,7 +2,7 @@
 import React from "react";
 import ProductCard from "../ProductCard/ProductCard";
 
-const ProductGrid = ({ products }) => {
+const ProductGrid = ({ products }: { products: any[] }) => {
   return (
     <section className="py-12 bg-white">
       <div className="container mx-auto px-4">

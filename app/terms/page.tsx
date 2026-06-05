@@ -62,7 +62,7 @@ export default function TermsPage() {
                <div className="flex items-center gap-10 mb-14">
                   {/* الأيقونة اللي بتقلب أبيض عند الـ Hover */}
                   <div className="bg-green-50 p-9 rounded-[38px] text-[#13b443] group-hover:bg-[#13b443] group-hover:text-white group-hover:shadow-2xl group-hover:shadow-green-200 transition-all duration-500 shrink-0">
-                    {React.cloneElement(sec.icon as React.ReactElement, { size: 45 })}
+                    {React.cloneElement(sec.icon as React.ReactElement<any>, { size: 45 })}
                   </div>
                   <div>
                     <span className="text-[14px] font-black text-green-600 uppercase tracking-[4px] opacity-40 mb-3 block">Article {sec.id}</span>

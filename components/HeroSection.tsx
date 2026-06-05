@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-// شيلنا Autoplay من هنا عشان ملوش لزمة دلوقتي
 import { Pagination, Navigation } from "swiper/modules";
 import Link from "next/link";
 
@@ -9,7 +8,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-const HeroSection = () => {
+// 1. بنعرف هنا الـ Interface عشان نفهم التايب سكريبت إن المكون بيستقبل categories
+interface HeroSectionProps {
+  categories?: any; 
+}
+
+// 2. بنخلي المكون يستقبل البروبس بالشكل ده
+const HeroSection = ({ categories }: HeroSectionProps) => {
   const slidesData = [
     {
       id: 1,
@@ -34,9 +39,7 @@ const HeroSection = () => {
   return (
     <section className="w-full">
       <Swiper
-        // 1. شيلنا مديول Autoplay من المصفوفة
         modules={[Pagination, Navigation]}
-        // 2. حذفنا سطر الـ autoplay بالكامل
         pagination={{ clickable: true }}
         navigation={true}
         loop={true}
