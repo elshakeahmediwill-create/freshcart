@@ -9,7 +9,7 @@ import CategoryDropdown from "../components/CategoryDropdown";
 import { WishlistProvider, useWishlist } from "./context/WishlistContext";
 // 1. استيراد الـ Context والـ Hook (تأكد من إنشاء ملف الـ Context أولاً)
 import { CartProvider, useCart } from "./context/CartContext"; 
-
+import WishlistBadge from "../components/WishlistBadge";
 import { 
   ShoppingCart, 
   Heart, 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useWishlist } from "@/context/WishlistContext"; 
+import { useWishlist } from ".././app/context/WishlistContext"; 
 import { Heart } from "lucide-react"; 
 import { useEffect, useState } from "react";
 
